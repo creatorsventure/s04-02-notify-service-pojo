@@ -1,23 +1,16 @@
 package com.cv.s0402notifyservicepojo.enm;
 
-import lombok.Getter;
-
-@Getter
 public enum DeliveryTemplate {
-    BASE_EMAIL_TEMPLATE(0);
+    BASE_LAYOUT("base-email-layout.html");
 
-    private final int code;
+    private final String templateName;
 
-    DeliveryTemplate(int code) {
-        this.code = code;
+    DeliveryTemplate(String templateName) {
+        this.templateName = templateName;
     }
 
-    public static DeliveryTemplate fromCode(int code) {
-        for (DeliveryTemplate type : DeliveryTemplate.values()) {
-            if (type.getCode() == code) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("Invalid NotificationType code: " + code);
+    @Override
+    public String toString() {
+        return templateName;
     }
 }

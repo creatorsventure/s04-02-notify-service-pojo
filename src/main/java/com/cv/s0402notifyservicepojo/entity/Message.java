@@ -2,7 +2,6 @@ package com.cv.s0402notifyservicepojo.entity;
 
 import com.cv.s0402notifyservicepojo.enm.DeliveryChannel;
 import com.cv.s0402notifyservicepojo.enm.DeliveryTemplate;
-import com.cv.s0402notifyservicepojo.enm.MessageType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -33,9 +32,6 @@ public class Message implements Serializable {
     private DeliveryChannel deliveryChannel;
 
     @Column
-    private MessageType messageType;
-
-    @Column
     private DeliveryTemplate deliveryTemplate;
 
     @Column
@@ -60,6 +56,6 @@ public class Message implements Serializable {
     private Recipient recipient;
 
     @OneToMany(mappedBy = "message")
-    private List<MessageHistory> messageHistory;
+    private List<DeliveryHistory> deliveryHistoryList;
 
 }

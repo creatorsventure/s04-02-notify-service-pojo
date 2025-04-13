@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MessageHistoryDto implements Serializable {
+public class DeliveryHistoryDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8639426644708806090L;

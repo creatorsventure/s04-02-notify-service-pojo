@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
-public class MessageHistory implements Serializable {
+public class DeliveryHistory implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -353225537228496405L;
