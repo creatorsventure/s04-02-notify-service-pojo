@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-public class NotificationHelper implements Serializable {
+public class NotifiyHelper implements Serializable {
     @Serial
     private static final long serialVersionUID = 3206950347931949730L;
 
