@@ -1,6 +1,5 @@
 package com.cv.s0402notifyservicepojo.dto;
 
-import com.cv.s0402notifyservicepojo.enm.DeliveryChannel;
 import com.cv.s0402notifyservicepojo.enm.DeliveryTemplate;
 import com.cv.s0402notifyservicepojo.enm.MessageType;
 import lombok.AllArgsConstructor;
@@ -10,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -27,8 +27,10 @@ public class MessageDto implements Serializable {
     private Map<String, String> deliveryTemplateKV;
     private Integer attempts;
     private String subject;
-    private String content;
+    private List<String> contentLines;
     private boolean isAttachment;
     private String attachmentPath;
+    private boolean isTable;
+    private TableDto tableDto;
 
 }
