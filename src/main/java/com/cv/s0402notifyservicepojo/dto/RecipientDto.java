@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,5 +23,7 @@ public class RecipientDto implements Serializable {
     private String mobileNumber;
     private String countryCode;
     private String email;
+    private List<String> ccList;
+    private List<String> bccList;
     private boolean status;
 }

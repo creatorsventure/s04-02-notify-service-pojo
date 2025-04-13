@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -22,9 +21,9 @@ public class MessageDto implements Serializable {
     private static final long serialVersionUID = 4336280906091618294L;
 
     private String id;
+    private String i18nCode;
     private MessageType messageType;
     private DeliveryTemplate deliveryTemplate;
-    private Map<String, String> deliveryTemplateKV;
     private Integer attempts;
     private String subject;
     private List<String> contentLines;

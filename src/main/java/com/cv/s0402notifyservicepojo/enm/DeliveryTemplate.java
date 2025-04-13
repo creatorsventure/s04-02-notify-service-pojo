@@ -4,8 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum DeliveryTemplate {
-    GENERAL(0),
-    CUSTOM(1);
+    BASE_EMAIL_TEMPLATE(0);
 
     private final int code;
 
