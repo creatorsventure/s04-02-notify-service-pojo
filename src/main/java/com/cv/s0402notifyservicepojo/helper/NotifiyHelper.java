@@ -17,7 +17,7 @@ public class NotifiyHelper implements Serializable {
     @Serial
     private static final long serialVersionUID = 3206950347931949730L;
 
-    public static NotifyDto notifyPasswordEmail(RecipientDto recipientDto, Locale locale, String link) {
+    public static NotifyDto notifyActivateAccount(RecipientDto recipientDto, Locale locale, String link) {
         NotifyDto notifyDto = new NotifyDto();
         notifyDto.mapSingle(MessageDto.builder()
                 .deliveryChannel(DeliveryChannel.EMAIL)
@@ -27,12 +27,12 @@ public class NotifiyHelper implements Serializable {
                 .isTable(false)
                 .subjectDto(ContentDto.builder()
                         .isTranslate(true)
-                        .keyOrContent("email.password.subject")
+                        .keyOrContent("email.activate-account.subject")
                         .build())
                 .contentLines(List.of(
                         ContentDto.builder()
                                 .isTranslate(true)
-                                .keyOrContent("email.password.hint-1")
+                                .keyOrContent("email.activate-account.hint-1")
                                 .build(),
                         ContentDto.builder()
                                 .isTranslate(false)
@@ -40,11 +40,44 @@ public class NotifiyHelper implements Serializable {
                                 .build(),
                         ContentDto.builder()
                                 .isTranslate(true)
-                                .keyOrContent("email.password.hint-2")
+                                .keyOrContent("email.activate-account.hint-2")
                                 .build(),
                         ContentDto.builder()
                                 .isTranslate(true)
-                                .keyOrContent("email.password.hint-3")
+                                .keyOrContent("email.general.link-expiry")
+                                .build()
+                )).build(), recipientDto);
+        return notifyDto;
+    }
+
+    public static NotifyDto notifyPasswordReset(RecipientDto recipientDto, Locale locale, String link) {
+        NotifyDto notifyDto = new NotifyDto();
+        notifyDto.mapSingle(MessageDto.builder()
+                .deliveryChannel(DeliveryChannel.EMAIL)
+                .deliveryTemplate(DeliveryTemplate.BASE_LAYOUT)
+                .locale(locale)
+                .isAttachment(false)
+                .isTable(false)
+                .subjectDto(ContentDto.builder()
+                        .isTranslate(true)
+                        .keyOrContent("email.reset-password.subject")
+                        .build())
+                .contentLines(List.of(
+                        ContentDto.builder()
+                                .isTranslate(true)
+                                .keyOrContent("email.reset-password.hint-1")
+                                .build(),
+                        ContentDto.builder()
+                                .isTranslate(false)
+                                .keyOrContent(link)
+                                .build(),
+                        ContentDto.builder()
+                                .isTranslate(true)
+                                .keyOrContent("email.reset-password.hint-2")
+                                .build(),
+                        ContentDto.builder()
+                                .isTranslate(true)
+                                .keyOrContent("email.general.link-expiry")
                                 .build()
                 )).build(), recipientDto);
         return notifyDto;
