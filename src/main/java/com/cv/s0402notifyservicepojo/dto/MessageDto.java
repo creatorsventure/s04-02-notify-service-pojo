@@ -26,7 +26,8 @@ public class MessageDto implements Serializable {
     private DeliveryChannel deliveryChannel;
     private DeliveryTemplate deliveryTemplate;
     private Integer attempts;
-    private ContentDto subject;
+    private ContentDto subjectDto;
+    private String content;
     private List<ContentDto> contentLines;
     private boolean isAttachment;
     private String attachmentPath;
