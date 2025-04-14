@@ -29,6 +29,9 @@ public class Message implements Serializable {
     private String id;
 
     @Column
+    private String trackId;
+
+    @Column
     private DeliveryChannel deliveryChannel;
 
     @Column

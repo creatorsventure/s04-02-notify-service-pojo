@@ -17,66 +17,69 @@ public class NotifiyHelper implements Serializable {
     @Serial
     private static final long serialVersionUID = 3206950347931949730L;
 
-    public static NotifyDto notifyActivateAccount(RecipientDto recipientDto, Locale locale, String link) {
+    public static NotifyDto notifyActivateAccount(RecipientDto recipientDto, Locale locale, String link, String id) {
         NotifyDto notifyDto = new NotifyDto();
         notifyDto.mapSingle(MessageDto.builder()
                 .deliveryChannel(DeliveryChannel.EMAIL)
                 .deliveryTemplate(DeliveryTemplate.BASE_LAYOUT)
                 .locale(locale)
-                .isAttachment(false)
-                .isTable(false)
+                .trackId(id)
+                .attachment(false)
+                .table(false)
                 .subjectDto(ContentDto.builder()
-                        .isTranslate(true)
+                        .translate(true)
                         .keyOrContent("email.activate-account.subject")
                         .build())
                 .contentLines(List.of(
                         ContentDto.builder()
-                                .isTranslate(true)
+                                .translate(true)
                                 .keyOrContent("email.activate-account.hint-1")
                                 .build(),
                         ContentDto.builder()
-                                .isTranslate(false)
+                                .link(true)
+                                .keyOrLinkLabel("email.general.link-click")
                                 .keyOrContent(link)
                                 .build(),
                         ContentDto.builder()
-                                .isTranslate(true)
+                                .translate(true)
                                 .keyOrContent("email.activate-account.hint-2")
                                 .build(),
                         ContentDto.builder()
-                                .isTranslate(true)
+                                .translate(true)
                                 .keyOrContent("email.general.link-expiry")
                                 .build()
                 )).build(), recipientDto);
         return notifyDto;
     }
 
-    public static NotifyDto notifyPasswordReset(RecipientDto recipientDto, Locale locale, String link) {
+    public static NotifyDto notifyPasswordReset(RecipientDto recipientDto, Locale locale, String link, String id) {
         NotifyDto notifyDto = new NotifyDto();
         notifyDto.mapSingle(MessageDto.builder()
                 .deliveryChannel(DeliveryChannel.EMAIL)
                 .deliveryTemplate(DeliveryTemplate.BASE_LAYOUT)
                 .locale(locale)
-                .isAttachment(false)
-                .isTable(false)
+                .trackId(id)
+                .attachment(false)
+                .table(false)
                 .subjectDto(ContentDto.builder()
-                        .isTranslate(true)
+                        .translate(true)
                         .keyOrContent("email.reset-password.subject")
                         .build())
                 .contentLines(List.of(
                         ContentDto.builder()
-                                .isTranslate(true)
+                                .translate(true)
                                 .keyOrContent("email.reset-password.hint-1")
                                 .build(),
                         ContentDto.builder()
-                                .isTranslate(false)
+                                .translate(false)
                                 .keyOrContent(link)
                                 .build(),
                         ContentDto.builder()
-                                .isTranslate(true)
+                                .translate(true)
                                 .keyOrContent("email.reset-password.hint-2")
                                 .build(),
                         ContentDto.builder()
-                                .isTranslate(true)
+                                .translate(true)
                                 .keyOrContent("email.general.link-expiry")
                                 .build()
                 )).build(), recipientDto);

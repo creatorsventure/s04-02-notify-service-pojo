@@ -47,7 +47,6 @@ public class Recipient implements Serializable {
     @NotNull(message = "{app.message.failure.blank}")
     @Size(min = 3, max = 250, message = "{app.message.failure.size}")
     @Email(message = "{app.message.failure.email}")
-    @Column(unique = true)
     private String email;
 
     @Column(columnDefinition = "boolean default false")

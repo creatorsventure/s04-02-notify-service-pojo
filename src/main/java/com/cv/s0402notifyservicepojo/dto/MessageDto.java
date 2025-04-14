@@ -26,12 +26,14 @@ public class MessageDto implements Serializable {
     private DeliveryChannel deliveryChannel;
     private DeliveryTemplate deliveryTemplate;
     private Integer attempts;
+    private String subject;
+    private String trackId;
     private ContentDto subjectDto;
     private String content;
     private List<ContentDto> contentLines;
-    private boolean isAttachment;
+    private boolean attachment;
     private String attachmentPath;
-    private boolean isTable;
+    private boolean table;
     private TableDto tableDto;
 
 }

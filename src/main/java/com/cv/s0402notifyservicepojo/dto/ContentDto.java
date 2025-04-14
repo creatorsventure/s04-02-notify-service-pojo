@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ContentDto {
 
-    private boolean isTranslate;
+    private boolean translate;
     private String keyOrContent;
+    private boolean link;
+    private String keyOrLinkLabel;
 }
