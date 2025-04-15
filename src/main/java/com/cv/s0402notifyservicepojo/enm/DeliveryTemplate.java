@@ -1,7 +1,7 @@
 package com.cv.s0402notifyservicepojo.enm;
 
 public enum DeliveryTemplate {
-    BASE_LAYOUT("base-email-layout.html");
+    BASE_LAYOUT("base-email-layout");
 
     private final String templateName;
 
