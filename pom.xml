@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.cv</groupId>
     <artifactId>s04-02-notify-service-pojo</artifactId>
-    <version>0.0.27-SNAPSHOT</version>
+    <version>0.0.28-SNAPSHOT</version>
     <name>s04-02-notify-service-pojo</name>
     <description>s04-02-notify-service-pojo</description>
     <url/>
