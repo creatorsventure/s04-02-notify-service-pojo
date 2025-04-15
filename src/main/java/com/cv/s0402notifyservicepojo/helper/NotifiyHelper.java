@@ -71,7 +71,8 @@ public class NotifiyHelper implements Serializable {
                                 .keyOrContent("email.reset-password.hint-1")
                                 .build(),
                         ContentDto.builder()
-                                .translate(false)
+                                .link(true)
+                                .keyOrLinkLabel("email.general.link-click")
                                 .keyOrContent(link)
                                 .build(),
                         ContentDto.builder()
