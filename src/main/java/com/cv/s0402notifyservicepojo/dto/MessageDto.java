@@ -31,6 +31,7 @@ public class MessageDto implements Serializable {
     private ContentDto subjectDto;
     private String content;
     private List<ContentDto> contentLines;
+    private List<ContentDto> footerContentLines;
     private boolean attachment;
     private String attachmentPath;
     private boolean table;

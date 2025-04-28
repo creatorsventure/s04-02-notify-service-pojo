@@ -1,10 +1,7 @@
 package com.cv.s0402notifyservicepojo.helper;
 
 
-import com.cv.s0402notifyservicepojo.dto.ContentDto;
-import com.cv.s0402notifyservicepojo.dto.MessageDto;
-import com.cv.s0402notifyservicepojo.dto.NotifyDto;
-import com.cv.s0402notifyservicepojo.dto.RecipientDto;
+import com.cv.s0402notifyservicepojo.dto.*;
 import com.cv.s0402notifyservicepojo.enm.DeliveryChannel;
 import com.cv.s0402notifyservicepojo.enm.DeliveryTemplate;
 
@@ -153,6 +150,43 @@ public class NotifyHelper implements Serializable {
                                 .keyOrContent("email.otp.link-expiry")
                                 .build()
                 )).build(), recipientDto);
+        return notifyDto;
+    }
+
+    public static NotifyDto notifyAccountInfo(RecipientDto recipientDto, Locale locale, String csvLine, String loginLink, String id) {
+        NotifyDto notifyDto = new NotifyDto();
+        TableDto dto = new TableDto();
+        dto.addHeader("email.account.info.column-1,email.account.info.column-2,email.account.info.column-3");
+        dto.addRow(csvLine);
+        notifyDto.mapSingle(MessageDto.builder()
+                        .deliveryChannel(DeliveryChannel.EMAIL)
+                        .deliveryTemplate(DeliveryTemplate.BASE_LAYOUT)
+                        .locale(locale)
+                        .trackId(id)
+                        .attachment(false)
+                        .table(true)
+                        .subjectDto(ContentDto.builder()
+                                .translate(true)
+                                .keyOrContent("email.account.info.subject")
+                                .build())
+                        .contentLines(List.of(
+                                ContentDto.builder()
+                                        .translate(true)
+                                        .keyOrContent("email.otp.hint-1")
+                                        .build(),
+                                ContentDto.builder()
+                                        .link(true)
+                                        .keyOrLinkLabel("email.general.link-click")
+                                        .keyOrContent(loginLink)
+                                        .build()))
+                        .tableDto(dto)
+                        .footerContentLines(List.of(
+                                ContentDto.builder()
+                                        .translate(true)
+                                        .keyOrContent("email.general.warning")
+                                        .build())
+                        ).build(),
+                recipientDto);
         return notifyDto;
     }
 }
