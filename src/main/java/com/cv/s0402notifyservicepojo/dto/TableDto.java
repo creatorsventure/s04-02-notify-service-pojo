@@ -1,7 +1,6 @@
 package com.cv.s0402notifyservicepojo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,8 +13,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class TableDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 5183383994517395243L;
@@ -38,7 +35,7 @@ public class TableDto implements Serializable {
         if (table == null || table.isEmpty()) {
             throw new IllegalStateException("Add header first");
         }
-        if (row.size() != table.get(0).size()) {
+        if (row.size() != table.getFirst().size()) {
             throw new IllegalArgumentException("Row size does not match header");
         }
         table.add(row);
@@ -51,11 +48,13 @@ public class TableDto implements Serializable {
         table.remove(index);
     }
 
+    @JsonIgnore
     public List<String> getHeader() {
         if (table == null || table.isEmpty()) return Collections.emptyList();
-        return table.get(0);
+        return table.getFirst();
     }
 
+    @JsonIgnore
     public List<List<String>> getRows() {
         if (table == null || table.size() <= 1) return Collections.emptyList();
         return table.subList(1, table.size());

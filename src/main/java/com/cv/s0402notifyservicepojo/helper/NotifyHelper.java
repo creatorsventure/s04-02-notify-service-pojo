@@ -155,16 +155,15 @@ public class NotifyHelper implements Serializable {
 
     public static NotifyDto notifyAccountInfo(RecipientDto recipientDto, Locale locale, String csvLine, String loginLink, String id) {
         NotifyDto notifyDto = new NotifyDto();
-        TableDto dto = new TableDto();
-        dto.addHeader("email.account.info.column-1,email.account.info.column-2,email.account.info.column-3");
-        dto.addRow(csvLine);
+        TableDto tableDto = new TableDto();
+        tableDto.addHeader("email.account.info.column-1,email.account.info.column-2,email.account.info.column-3");
+        tableDto.addRow(csvLine);
         notifyDto.mapSingle(MessageDto.builder()
                         .deliveryChannel(DeliveryChannel.EMAIL)
                         .deliveryTemplate(DeliveryTemplate.BASE_LAYOUT)
                         .locale(locale)
                         .trackId(id)
                         .attachment(false)
-                        .table(true)
                         .subjectDto(ContentDto.builder()
                                 .translate(true)
                                 .keyOrContent("email.account.info.subject")
@@ -172,14 +171,15 @@ public class NotifyHelper implements Serializable {
                         .contentLines(List.of(
                                 ContentDto.builder()
                                         .translate(true)
-                                        .keyOrContent("email.otp.hint-1")
+                                        .keyOrContent("email.account.info.hint-1")
                                         .build(),
                                 ContentDto.builder()
                                         .link(true)
                                         .keyOrLinkLabel("email.general.link-click")
                                         .keyOrContent(loginLink)
                                         .build()))
-                        .tableDto(dto)
+                        .table(true)
+                        .tableDto(tableDto)
                         .footerContentLines(List.of(
                                 ContentDto.builder()
                                         .translate(true)
